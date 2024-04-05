@@ -19,7 +19,7 @@ class Calculator(QWidget):
         self.btn1.clicked.connect(self.activateMessage)  # 버튼 클릭 시 핸들러 함수 연결
 
         vbox = QVBoxLayout()  # 수직 레이아웃 위젯 생성
-        vbox.addStretch(self.te1)  # 수직 레이아웃에 텍스트 에디트 위젯 추가
+        vbox.addWidget(self.te1)  # 수직 레이아웃에 텍스트 에디트 위젯 추가
         vbox.addWidget(self.btn1)  # 버튼 위치
         vbox.addStretch(1)  # 빈 공간
 
