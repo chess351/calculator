@@ -1,16 +1,20 @@
 # ch 5.2.1 ui.py
 from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, 
-                             QMessageBox, QPlainTextEdit, QHBoxLayout)
+                             QMessageBox, QPlainTextEdit, QHBoxLayout, QLabel)  # QLabel추가
 from PyQt5.QtGui import QIcon  # icon을 추가하기 위한 라이브러리
+from PyQt5.QtCore import QDate, Qt  # 날자와 주요 속성값 사용을 위해 추가
 
 
 class View(QWidget):
 
     def __init__(self):
         super().__init__()
+        self.date = QDate.currentDate()  # 현재 날짜를 저장하기 위해 추가
         self.initUI()
 
     def initUI(self):
+        self.lbl1 = QLabel(self.date.toString(Qt.DefaultLocaleLongDate), self)  # 추가
+        
         self.te1 = QPlainTextEdit()  # 텍스트 에디트 위젯 생성
         self.te1.setReadOnly(True)  # 텍스트 위젯을 읽기만 가능하도록 수정
 
@@ -24,9 +28,10 @@ class View(QWidget):
 
         vbox = QVBoxLayout()  # 수직 레이아웃 위젯 생성
         vbox.addWidget(self.te1)  # 수직 레이아웃에 텍스트 에디트 위젯 추가
+        
         # vbox.addWidget(self.btn1)  # 버튼 위치
         vbox.addLayout(hbox)  # btn1 위치에 hbox를 배치
-        vbox.addStretch(1)  # 빈 공간
+        vbox.addWidget(self.lbl1)  # 수정
 
         self.setLayout(vbox)  # 빈 공간 - 버튼 - 빈 공간 순으로 수직 배치된 레이아웃 설정
 
@@ -41,4 +46,3 @@ class View(QWidget):
     def activateMessage(self):  # 핸들러 함수 수정 : 메시지가 텍스트 에디트에 출력되도록
         # QMessageBox.information(self,"information","Button clicked!")
         self.te1.appendPlainText("button clicked!")
-        
