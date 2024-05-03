@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout,
 from PyQt5.QtGui import QIcon  # icon을 추가하기 위한 라이브러리
 from PyQt5.QtCore import QDate, Qt  # 날자와 주요 속성값 사용을 위해 추가
 
-
+# 123
 class View(QWidget):
 
     def __init__(self):
